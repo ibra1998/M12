@@ -8,7 +8,7 @@ import springBootInitialDemo.dto.UserResponseDto;
 import springBootInitialDemo.service.IUserService;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/")
 public class InitialController {
 
     private final IUserService userService;
@@ -18,10 +18,17 @@ public class InitialController {
         this.userService = userService;
     }
 
-    @GetMapping("/test")
+    @GetMapping("")
     public String helloGradle() {
-        return "Hello Gradle!";
+        return "Hello World!";
     }
+    
+    @GetMapping("{nombre}")
+    public String helloGradle(@PathVariable("nombre") String nombre) {
+        return "Hello " + nombre;
+    }
+    
+    
 
     //@PutMapping(value ="", consumes = {"application/json"})
     @GetMapping("/user/{uuid}")
